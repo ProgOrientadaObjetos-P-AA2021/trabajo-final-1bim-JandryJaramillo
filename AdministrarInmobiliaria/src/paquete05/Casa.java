@@ -92,7 +92,7 @@ public class Casa implements Serializable {
         return constructora;
     }
     
-    @Override
+    
     public String toString() {
         return String.format("%s \n %.1f \n %.1f \n %.1f \n %s \n %s \n %d \n %s"
                 , propietario.obtenerNombres(), precioM2, númeroM2,costoFinal, 

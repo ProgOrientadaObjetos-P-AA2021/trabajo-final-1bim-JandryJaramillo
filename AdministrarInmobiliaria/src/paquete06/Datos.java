@@ -48,9 +48,9 @@ public class Datos {
             } else if (opcion2.equals("5")) {
                 verConstructoras();
             } else if (opcion2.equals("6")) {
-                verCasas();
+                verCasa();
             } else if (opcion2.equals("7")) {
-                verDepartamentos();
+                verDepartamento();
             }
         }
 
@@ -60,11 +60,12 @@ public class Datos {
         int cantidadPropietarios = Integer.parseInt(id("propietario", false));
         for (int i = 1; i <= cantidadPropietarios; i++) {
             Propietario propietario = deserializador.deserializarPropietario(
-                    Integer.toString(i), "propietario");               
-            System.out.println("Nombres: " + propietario.obtenerNombres());
-            System.out.println("Apellidos: " + propietario.obtenerApellidos());
-            System.out.println("Identificación: " + propietario.obtenerIdentificación());
-            System.out.println("");
+                    Integer.toString(i), "propietario");   
+                       
+            System.out.println("ID: " + propietario.obtenerNombres());
+            System.out.println("\nNombres: " + propietario.obtenerApellidos());
+            System.out.println("\nApellidos: " + propietario.obtenerIdentificación()); 
+            System.out.println("\n");
         }
     }
 
@@ -74,8 +75,8 @@ public class Datos {
             Ubicacion ubicacion = deserializador.deserializarUbicacionCasa(
                     Integer.toString(i), "ubicacion");            
             System.out.println("Barrio: " + ubicacion.obtenerNombreBarrio());
-            System.out.println("Referencia: " + ubicacion.obtenerReferencia());            
-            System.out.println("");
+            System.out.println("\nReferencia: " + ubicacion.obtenerReferencia());            
+            System.out.println("\n");
         }
     }
     
@@ -85,9 +86,9 @@ public class Datos {
             Ubicacion ubicacion = deserializador.deserializarUbicacionDepar(
                     Integer.toString(i), "ubicacion");            
             System.out.println("Número de casa: " + ubicacion.obtenerNúmeroDeCasa()); 
-            System.out.println("Barrio: " + ubicacion.obtenerNombreBarrio());
-            System.out.println("Referencia: " + ubicacion.obtenerReferencia());                       
-            System.out.println("");
+            System.out.println("\nBarrio: " + ubicacion.obtenerNombreBarrio());
+            System.out.println("\nReferencia: " + ubicacion.obtenerReferencia());                       
+            System.out.println("\n");
         }
     }
     
@@ -98,8 +99,8 @@ public class Datos {
             Ciudad ciudad = deserializador.deserializarCiudad(
                     Integer.toString(i), "ciudad");            
             System.out.println("Nombre ciudad: " + ciudad.obtenerNombreCiudad());
-            System.out.println("Nombre provincia: " + ciudad.obtenerNombreProvincia());
-            System.out.println("");
+            System.out.println("\nNombre provincia: " + ciudad.obtenerNombreProvincia());
+            System.out.println("\n");
         }
     }
 
@@ -110,61 +111,45 @@ public class Datos {
                     Integer.toString(i), "constructora");            
             System.out.print("Nombre de la constructora: "
                     + constructora.obtenerNombreC());
-            System.out.print("Identificación: " + constructora.obtenerId());
-            System.out.println("");
+            System.out.print("\nIdentificación: " + constructora.obtenerId());
+            System.out.println("\n");
         }
     }
-
-    public void verCasas() throws IOException {
+    
+    public void verCasa() throws IOException {
         int cantidadCasas = Integer.parseInt(id("casa", false));
 
         for (int i = 1; i <= cantidadCasas; i++) {
-            Casa casa = deserializador.deserializarCasa(Integer.toString(i), "casa");
-            System.out.print("Propietario.-\nNombres: " + casa.obtenerPropietario().obtenerNombres()
-            +"\nApellidos: "+casa.obtenerPropietario().obtenerApellidos()+
-                    "\nID: "+casa.obtenerPropietario().obtenerIdentificación());
-            System.out.print("Precio por metro cuadrado: " + casa.obtenerPrecioM2());
-            System.out.print("Número de metros cuadrados: " + casa.obtenerNúmeroM2());
-            System.out.print("Costo final: " + casa.obtenerCostoFinal());
-            System.out.print("Ubicación.-\nNombre del barrio: " + casa.obtenerUbicación().obtenerNombreBarrio()
-            +"\nReferencia: "+casa.obtenerUbicación().obtenerReferencia());
-            System.out.print("Ciudad.-\nNombre de la ciudad: "+
-                    casa.obtenerCiudad().obtenerNombreCiudad()+"\nNombre de la "
-                            + "provincia: "+casa.obtenerCiudad().obtenerNombreProvincia());
-            System.out.print("Número de cuartos: " + casa.obtenerNúmeroCuartos());
-            System.out.print("Constructora.-\nNombre de la constructora "+
-                    casa.obtenerConstructora().obtenerNombreC()+"ID: "+
-                    casa.obtenerConstructora().obtenerId());
-            System.out.println("");
+            Casa casa = deserializador.deserializarCasa(Integer.toString(i), "casa");                       
+                       
+            System.out.print("\nPrecio por metro cuadrado: " + casa.obtenerPrecioM2());
+            System.out.print("\nNúmero de metros cuadrados: " + casa.obtenerNúmeroM2());
+            System.out.print("\nCosto final: " + casa.obtenerCostoFinal());            
+            System.out.print("\nNombre de la ciudad: "+  casa.obtenerCiudad());
+            System.out.print("\nNúmero de cuartos: " + casa.obtenerNúmeroCuartos());            
+            System.out.println("\n");
         }
     }
 
-    public void verDepartamentos() throws IOException {
+    public void verDepartamento() throws IOException {
         int cantidadCasas = Integer.parseInt(id("departamento", false));
         for (int i = 1; i <= cantidadCasas; i++) {
             Departamento departamento = deserializador.deserializarDepartamento(
                     Integer.toString(i), "departamento");
-            System.out.print("Propietario.-\nNombres: " + departamento.obtenerPropietario().obtenerNombres()
-            +"\nApellidos: "+departamento.obtenerPropietario().obtenerApellidos()+
-                    "\nID: "+departamento.obtenerPropietario().obtenerIdentificación());
+            
             System.out.print("Precio por metro cuadrado: " + departamento.obtenerPrecioM2());
-            System.out.print("Número de metros cuadrados: " + departamento.obtenerNúmeroM2());
-            System.out.print("Valor alícuota mensual: " + departamento.obtenerAlícuotaMensual());
-            System.out.print("Costo final: " + departamento.obtenerCostoFinal());
-            System.out.print("Precio: " + departamento.obtenerPrecio());
-            System.out.print("Ubicación.-\nNúmero de casa: "+departamento.obtenerUbicación().obtenerNúmeroDeCasa()
-                    + "Nombre del barrio: " + departamento.obtenerUbicación().obtenerNombreBarrio()
-            +"\nReferencia: "+departamento.obtenerUbicación().obtenerReferencia());
-            System.out.print("Ciudad.-\nNombre de la ciudad: "+
-                    departamento.obtenerCiudad().obtenerNombreCiudad()+"\nNombre de la "
-                            + "provincia: "+departamento.obtenerCiudad().obtenerNombreProvincia());
-            System.out.print("Nombre del edificio: " + departamento.obtenerNombreEdificio());
-            System.out.print("Ubicación del departamento en el edificio: "+
+            System.out.print("\nNúmero de metros cuadrados: " + departamento.obtenerNúmeroM2());
+            System.out.print("\nValor alícuota mensual: " + departamento.obtenerAlícuotaMensual());
+            System.out.print("\nCosto final: " + departamento.obtenerCostoFinal());
+            System.out.print("\nPrecio: " + departamento.obtenerPrecio());
+            
+            System.out.print("\nNombre de la ciudad: "+
+                    departamento.obtenerCiudad());
+            System.out.print("\nNombre del edificio: " + departamento.obtenerNombreEdificio());
+            System.out.print("\nUbicación del departamento en el edificio: "+
                     departamento.obtenerUbicaciónDepartamento());
-            System.out.print("Constructora.-\nNombre de la constructora "+
-                    departamento.obtenerConstructora().obtenerNombreC()+"ID: "+
-                    departamento.obtenerConstructora().obtenerId());
-            System.out.println("");
+            
+            System.out.println("\n");
         }
     }
 

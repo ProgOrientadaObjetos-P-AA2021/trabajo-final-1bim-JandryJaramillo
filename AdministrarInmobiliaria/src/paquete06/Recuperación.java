@@ -114,12 +114,10 @@ public class Recuperación {
 
     public Casa deserializarCasa(String nombreCarpeta, String nombreArchivo)
             throws IOException {
-        Casa casa = null;
-        
+        Casa casa = null;        
         FileInputStream flujoEntrada = new FileInputStream(System.getProperty("user.dir")
                 + "\\datos\\casa\\" + nombreCarpeta + "\\" + nombreArchivo
-                + ".data");
-        
+                + ".data");        
         ObjectInputStream flujoObjetoEntrada = new ObjectInputStream(flujoEntrada);
 
         try {
